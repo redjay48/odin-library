@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
 <body>
-    <button id="addBooks">Add Books</button>
+    <button id="addBooks">Add New Book</button>
     <div class="formDiv">
         <form action="" >
             <label for="title">Title</label>
@@ -21,7 +22,16 @@
             <button id="submit">Submit To Library</button>
         </form>
     </div>
-
+    <div id="book-cards">
+        <div class="card">
+            <p class="card-title"></p>
+            <p class="card-author"></p>
+            <p class="card-total-pages"></p>
+            <p class="card-read-status"></p>
+        </div>
+    </div>
+    <button id="create">create</button>
+    <button id="delete">delete</button>
     <script src="main.js"></script>
 </body>
 </html>

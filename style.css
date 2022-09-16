@@ -1,0 +1,10 @@
+.card {
+    border: 2px blue solid;
+    height: 300px;
+    width: 200px;
+    margin: 50px;
+}
+
+#book-cards {
+    display: flex;
+}
