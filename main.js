@@ -7,6 +7,7 @@ function Book(title, author, noOfPages, readStatus) {
     this.readStatus = readStatus
 }
 
+
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
@@ -19,8 +20,6 @@ const author = document.getElementById('authorText');
 const noOfPages = document.getElementById('noOfPagesText');
 const read = document.getElementById('readText');
 const card = document.querySelector('.card');
-const createButton = document.querySelector('#create');
-const deleteButton = document.querySelector('#delete');
 const cardDiv = document.getElementById('bookCards');
 
 addButton.addEventListener('click', function () {
@@ -59,17 +58,34 @@ function createCard() {
         cardTotalPages.classList.add('card-total-pages');
         const cardReadStatus = document.createElement('p');
         cardReadStatus.classList.add('card-read-status');
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete');
+        deleteButton.textContent = "Delete Book";
+        const toggleButton = document.createElement('button');
+        toggleButton.classList.add('toggle');
+        toggleButton.textContent = 'Toggle Read Status';
         cardDiv.appendChild(newCard);
         newCard.appendChild(cardTitle);
         newCard.appendChild(cardAuthor);
         newCard.appendChild(cardLower);
+        newCard.appendChild(deleteButton);
+        newCard.appendChild(toggleButton);
         cardLower.appendChild(cardTotalPages);
         cardLower.appendChild(cardReadStatus);
+        deleteButton.addEventListener('click', function (e) {
+            e.target.parentNode.remove();
+        })
+        toggleButton.addEventListener('click', function (e) {
+            const readStatus = e.target.parentNode.children[2].children[1];
+            if (readStatus.textContent !== 'Read') {
+                readStatus.textContent = 'Read';
+            } else {
+                readStatus.textContent = 'Not Read';
+            }
+        })
     }
 
-deleteButton.addEventListener('click', function () {
-    cardDiv.lastChild.remove();
-})
+
 
 function displayCard() {
     for (let i = 0; i < myLibrary.length; i++) {
