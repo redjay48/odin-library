@@ -1,20 +1,4 @@
-let myLibrary = [
-    {
-        title: 'harry potter',
-        author: 'jk rowling',
-        noOfPages: 360,
-        readStatus: 'read'
-    }, {
-        title: 'harry potter 2',
-        author: 'j.k rowling',
-        noOfPages: 450,
-        readStatus: 'not read'
-    }, {
-        title: 'harry potter 3',
-        author: 'j.k. rowling',
-        noOfPages: 556,
-        readStatus: 'not read'
-    }];
+let myLibrary = [];
 
 function Book(title, author, noOfPages, readStatus) {
     this.author = author
@@ -26,8 +10,6 @@ function Book(title, author, noOfPages, readStatus) {
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
-
-const book1 = new Book('harry potter', 'jk rowling', '670', 'read');
 
 const addButton = document.querySelector('#addBooks');
 const formDiv = document.querySelector('.formDiv');
@@ -52,6 +34,7 @@ addButton.addEventListener('click', function () {
 submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     AddBooks();
+    displayCard();
 })
 
 function AddBooks() {
@@ -59,11 +42,11 @@ function AddBooks() {
     if (title.value !== '' && author.value !== '' && noOfPages.value !== '' && read.value !== '') {
         addBookToLibrary(book);
         document.querySelector('form').reset();
+        createCard();
     }
 }
 
 function createCard() {
-    for(let i = 0; i< myLibrary.length; i++) {
         const newCard = document.createElement('div');
         newCard.classList.add('card');
         const cardTitle = document.createElement('p');
@@ -82,10 +65,7 @@ function createCard() {
         newCard.appendChild(cardLower);
         cardLower.appendChild(cardTotalPages);
         cardLower.appendChild(cardReadStatus);
-    } 
-}
-
-createButton.addEventListener('click', createCard);
+    }
 
 deleteButton.addEventListener('click', function () {
     cardDiv.lastChild.remove();
@@ -96,7 +76,7 @@ function displayCard() {
         const cardArray = Array.from(cardDiv.children);
         cardArray[i].children[0].textContent = myLibrary[i].title;
         cardArray[i].children[1].textContent = myLibrary[i].author;
-        cardArray[i].children[2].children[0].textContent = myLibrary[i].noOfPages;
+        cardArray[i].children[2].children[0].textContent = `${myLibrary[i].noOfPages} Pages`;
         cardArray[i].children[2].children[1].textContent = myLibrary[i].readStatus;
     }
 }
