@@ -33,49 +33,70 @@ const addButton = document.querySelector('#addBooks');
 const formDiv = document.querySelector('.formDiv');
 const submitButton = document.querySelector('#submit');
 const title = document.getElementById('titleText');
-const author =  document.getElementById('authorText');
+const author = document.getElementById('authorText');
 const noOfPages = document.getElementById('noOfPagesText');
 const read = document.getElementById('readText');
 const card = document.querySelector('.card');
 const createButton = document.querySelector('#create');
 const deleteButton = document.querySelector('#delete');
-const cardDiv = document.querySelector('#book-cards');
-const cardTitle = document.querySelector('.card-title');
-const cardAuthor = document.querySelector('.card-author');
-const cardTotalPages = document.querySelector('.card-total-pages');
-const cardReadStatus = document.querySelector('.card-read-status');
+const cardDiv = document.getElementById('bookCards');
 
-addButton.addEventListener('click', function() {
-    if(formDiv.style.display === 'none') {
+addButton.addEventListener('click', function () {
+    if (formDiv.style.display === 'none') {
         formDiv.style.display = 'block';
     } else {
         formDiv.style.display = 'none';
     }
 })
 
-submitButton.addEventListener('click', function(e) {
+submitButton.addEventListener('click', function (e) {
     e.preventDefault();
+    AddBooks();
+})
+
+function AddBooks() {
     let book = new Book(title.value, author.value, noOfPages.value, read.value);
-    if(title.value !== '' && author.value !== '' && noOfPages.value !== '' && read.value !== '') {
+    if (title.value !== '' && author.value !== '' && noOfPages.value !== '' && read.value !== '') {
         addBookToLibrary(book);
         document.querySelector('form').reset();
     }
-})
+}
 
-createButton.addEventListener('click', function() {
-    const newCard = document.createElement('div');
-    newCard.classList.add('card');
-    cardDiv.appendChild(newCard);
-    newCard.appendChild(cardTitle);
-    newCard.appendChild(cardAuthor);
-    newCard.appendChild(cardTotalPages);
-    newCard.appendChild(cardReadStatus);
-})
+function createCard() {
+    for(let i = 0; i< myLibrary.length; i++) {
+        const newCard = document.createElement('div');
+        newCard.classList.add('card');
+        const cardTitle = document.createElement('p');
+        cardTitle.classList.add('card-title');
+        const cardAuthor = document.createElement('p');
+        cardAuthor.classList.add('card-author');
+        const cardLower = document.createElement('div');
+        cardLower.classList.add('card-lower');
+        const cardTotalPages = document.createElement('p');
+        cardTotalPages.classList.add('card-total-pages');
+        const cardReadStatus = document.createElement('p');
+        cardReadStatus.classList.add('card-read-status');
+        cardDiv.appendChild(newCard);
+        newCard.appendChild(cardTitle);
+        newCard.appendChild(cardAuthor);
+        newCard.appendChild(cardLower);
+        cardLower.appendChild(cardTotalPages);
+        cardLower.appendChild(cardReadStatus);
+    } 
+}
 
-deleteButton.addEventListener('click', function() {
+createButton.addEventListener('click', createCard);
+
+deleteButton.addEventListener('click', function () {
     cardDiv.lastChild.remove();
 })
 
-for (let i = 0; i < myLibrary.length; i++) {
-    
+function displayCard() {
+    for (let i = 0; i < myLibrary.length; i++) {
+        const cardArray = Array.from(cardDiv.children);
+        cardArray[i].children[0].textContent = myLibrary[i].title;
+        cardArray[i].children[1].textContent = myLibrary[i].author;
+        cardArray[i].children[2].children[0].textContent = myLibrary[i].noOfPages;
+        cardArray[i].children[2].children[1].textContent = myLibrary[i].readStatus;
+    }
 }
