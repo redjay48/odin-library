@@ -16,11 +16,10 @@ const book1 = new Book('harry potter', 'jk rowling', '670', 'read');
 const addButton = document.querySelector('#addBooks');
 const formDiv = document.querySelector('.formDiv');
 const submitButton = document.querySelector('#submit');
-const title = document.querySelector('#titleText');
-const author =  document.querySelector('#authorText');
-const noOfPages = document.querySelector('noOfPagesText');
-const read = document.querySelector('#readText')
-const form = document.getElementsByTagName('form')
+const title = document.getElementById('titleText');
+const author =  document.getElementById('authorText');
+const noOfPages = document.getElementById('noOfPagesText');
+const read = document.getElementById('readText');
 
 
 addButton.addEventListener('click', function() {
@@ -31,7 +30,12 @@ addButton.addEventListener('click', function() {
     }
 })
 
-submitButton.addEventListener('click', function() {
-    let newBook = new Book(title.value, author.value, noOfPages.value, read.value);
-    console.log(newBook);
+submitButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    let book = new Book(title.value, author.value, noOfPages.value, read.value);
+    if(title.value !== '' && author.value !== '' && noOfPages.value !== '' && read.value !== '') {
+        addBookToLibrary(book);
+        document.querySelector('form').reset();
+    }
+    
 })
