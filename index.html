@@ -14,13 +14,18 @@
     <div class="formDiv">
         <form action="">
             <label for="title">Title</label>
-            <input type="text" name="title" id="titleText" required="required">
+            <input type="text" name="title" id="titleText">
             <label for="author">Author</label>
-            <input type="text" name="author" id="authorText" required="required">
+            <input type="text" name="author" id="authorText">
             <label for="noOfPages">Number Of Pages</label>
-            <input type="number" name="noOfPages" id="noOfPagesText" required="required">
+            <input type="number" name="noOfPages" id="noOfPagesText">
             <label for="read">Read Status</label>
-            <input type="text" name="read" id="readText" required="required">
+            <select name="read" id="readText">
+                <option value="Read">Read</option>
+                <option value="Not Read">Not Read</option>
+                <option value="Reading">Reading</option>
+            </select>
+            <!-- <input type="text" name="read" id="readText"> -->
             <button id="submit">Submit To Library</button>
         </form>
     </div>

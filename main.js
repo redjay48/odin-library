@@ -77,10 +77,15 @@ function createCard() {
         })
         toggleButton.addEventListener('click', function (e) {
             const readStatus = e.target.parentNode.children[2].children[1];
-            if (readStatus.textContent !== 'Read') {
+            if (readStatus.textContent === 'Not Read') {
                 readStatus.textContent = 'Read';
-            } else {
+                readStatus.style.color = 'green';
+            } else if (readStatus.textContent === 'Read') {
+                readStatus.textContent = 'Reading';
+                readStatus.style.color = 'orange';
+            } else if (readStatus.textContent === 'Reading'){
                 readStatus.textContent = 'Not Read';
+                readStatus.style.color = 'red';
             }
         })
     }
@@ -94,5 +99,12 @@ function displayCard() {
         cardArray[i].children[1].textContent = myLibrary[i].author;
         cardArray[i].children[2].children[0].textContent = `${myLibrary[i].noOfPages} Pages`;
         cardArray[i].children[2].children[1].textContent = myLibrary[i].readStatus;
-    }
+        if (cardArray[i].children[2].children[1].textContent === 'Not Read') {
+            cardArray[i].children[2].children[1].style.color = 'red';
+        } else if (cardArray[i].children[2].children[1].textContent === 'Read') {
+            cardArray[i].children[2].children[1].style.color = 'green';
+        } else if (cardArray[i].children[2].children[1].textContent === 'Reading'){
+            cardArray[i].children[2].children[1].style.color = 'orange';
+        }    }
+    
 }
