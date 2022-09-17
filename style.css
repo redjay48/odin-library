@@ -1,20 +1,89 @@
-.card {
-    border: 2px blue solid;
-    height: 300px;
+body {
+    margin: 0;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(250, 244, 237);
+}
+
+#form-left {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    padding: 40px;
+    gap: 30px;
+}
+
+#form-right {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    padding: 40px;
+    gap: 30px;
+}
+
+input {
+    height: 30px;
+    width: 260px;
+    border: 1px solid #E5E7EB;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(179, 91, 64);
+}
+
+#submit {
+    height: 100px;
     width: 200px;
+    place-self: center;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-size: 18px;
+    color: rgb(149, 173, 13);
+}
+
+select#readText {
+    height: 30px;
+    width: 260px;
+    border: 1px solid #E5E7EB;
+    border-radius: 5px;
+}
+.card {
+    border: 2px rgb(158, 158, 255) solid;
+    height: 330px;
+    width: 250px;
     margin: 50px;
     padding: 20px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+.delete, .toggle {
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    height: 30px;
+}
+
+.delete {
+    margin-right: 89px;
 }
 
 #bookCards {
     display: flex;
     flex-wrap: wrap;
+    background-color: rgb(224, 224, 224);
+    justify-content:center;
 }
 
 .card-lower {
     display: flex;
-    padding-top: 60px;
+    padding-top: 80px;
     justify-content: space-between;
+    margin-top: 60px;
 }
 
 .card-title {
@@ -41,4 +110,24 @@
 .card-read-status {
     font-size: 16px;
     text-align: right;
+}
+
+.card-read-status, .card-total-pages {
+    margin-bottom: 0;
+}
+
+#add-button-div {
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+#addBooks {
+    width: 300px;
+    height: 50px;
+    margin: 50px;
+    font-size: 24px;
+    border-radius: 5px;
+    color: rgb(149, 173, 13);
+    border: 1px solid rgb(255, 255, 255);
 }

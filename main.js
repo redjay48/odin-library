@@ -60,7 +60,7 @@ function createCard() {
         cardReadStatus.classList.add('card-read-status');
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('delete');
-        deleteButton.textContent = "Delete Book";
+        deleteButton.textContent = "🗑";
         const toggleButton = document.createElement('button');
         toggleButton.classList.add('toggle');
         toggleButton.textContent = 'Toggle Read Status';
