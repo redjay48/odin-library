@@ -5,7 +5,7 @@ body {
 form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: rgb(250, 244, 237);
+    background-color: rgb(222, 230, 216);
 }
 
 #form-left {
@@ -43,7 +43,13 @@ label {
     border: 1px solid white;
     font-size: 18px;
     color: rgb(149, 173, 13);
+    background-color: #f0f0f0;
 }
+
+#submit:hover {
+    background-color: #e0e0e0;
+}
+
 
 select#readText {
     height: 30px;
@@ -119,7 +125,7 @@ select#readText {
 #add-button-div {
     display: flex;
     justify-content: center;
-    background-color: aquamarine;
+    background-color: rgb(196, 212, 207);
 }
 
 #addBooks {
@@ -130,4 +136,8 @@ select#readText {
     border-radius: 5px;
     color: rgb(149, 173, 13);
     border: 1px solid rgb(255, 255, 255);
+}
+
+#addBooks:hover {
+    background-color: #e0e0e0;
 }
